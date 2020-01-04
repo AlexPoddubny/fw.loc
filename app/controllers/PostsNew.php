@@ -1,14 +1,20 @@
 <?php
 	
+	namespace app\controllers;
+	
+	
+	use vendor\core\base\Controller;
 	
 	class PostsNew
+		extends Controller
 	{
-		public function __construct()
+		
+		public function actionIndex()
 		{
 			echo __METHOD__ . '<br>';
 		}
 		
-		public function actionIndex()
+		public function actionTest()
 		{
 			echo __METHOD__ . '<br>';
 		}

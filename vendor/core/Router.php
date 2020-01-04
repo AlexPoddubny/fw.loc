@@ -1,5 +1,7 @@
 <?php
 	
+	namespace vendor\core;
+	
 	
 	class Router
 	{
@@ -39,7 +41,6 @@
 		 */
 		private static function matchRoute($url)
 		{
-			debug(self::$routes);
 			foreach (self::$routes as $pattern => $route){
 				if (preg_match("#$pattern#i", $url, $matches)){
 					foreach ($matches as $k => $v){
@@ -69,10 +70,13 @@
 		 */
 		public static function dispatch($url)
 		{
+			$url = self::removeQueryString($url);
+			debug($url);
 			if (self::matchRoute($url)){
-				$controller = self::upperCamelCase(self::$route['controller']);
+				$controller = 'app\controllers\\'
+					. self::upperCamelCase(self::$route['controller']);
 				if (class_exists($controller)){
-					$cObj = new $controller;
+					$cObj = new $controller(self::$route);
 					$action = 'action' . self::upperCamelCase(self::$route['action']);
 					if (method_exists($cObj, $action)){
 						$cObj->$action();
@@ -86,6 +90,18 @@
 				http_response_code(404);
 				include '404.html';
 			}
+		}
+		
+		protected static function removeQueryString($url)
+		{
+			if ($url){
+				$params = explode('&', $url);
+				if (false === strpos($params[0], '=')){
+					return rtrim($params[0], '/');
+				}
+				return '';
+			}
+			return $url;
 		}
 		
 	}
