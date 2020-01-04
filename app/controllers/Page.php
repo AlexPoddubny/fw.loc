@@ -4,13 +4,11 @@
 	namespace app\controllers;
 	
 	
-	use vendor\core\base\Controller;
-	
 	class Page
-		extends Controller
+		extends App
 	{
 		public function actionView()
 		{
-			debug($this->route);
+		
 		}
 	}

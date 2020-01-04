@@ -71,7 +71,6 @@
 		public static function dispatch($url)
 		{
 			$url = self::removeQueryString($url);
-			debug($url);
 			if (self::matchRoute($url)){
 				$controller = 'app\controllers\\'
 					. self::upperCamelCase(self::$route['controller']);
@@ -80,6 +79,7 @@
 					$action = 'action' . self::upperCamelCase(self::$route['action']);
 					if (method_exists($cObj, $action)){
 						$cObj->$action();
+						$cObj->getView();
 					} else {
 						echo 'Method <b>' . $action . '</b> not found';
 					}
@@ -92,6 +92,11 @@
 			}
 		}
 		
+		/**
+		 * deleting GET-parameters
+		 * @param string $url
+		 * @return string
+		 */
 		protected static function removeQueryString($url)
 		{
 			if ($url){
