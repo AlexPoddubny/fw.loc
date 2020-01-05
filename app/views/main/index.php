@@ -1,2 +1,2 @@
-<?php
-	echo __FILE__;
+<code><?=__FILE__?></code>
+<?=$hi . ', ' . $name?>

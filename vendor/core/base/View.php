@@ -21,8 +21,11 @@
 			$this->view = $view;
 		}
 		
-		public function render()
+		public function render($vars)
 		{
+			if (is_array($vars)){
+				extract($vars);
+			}
 			$file_view = APP
 				. '/views/'
 				. $this->route['controller'] . '/'
@@ -35,7 +38,9 @@
 			}
 			$content = ob_get_clean();
 			if (false !== $this->layout){
-				$file_layout = APP . '/views/layouts/' . $this->layout . '.php';
+				$file_layout = APP
+					. '/views/layouts/'
+					. $this->layout . '.php';
 				if (is_file($file_layout)){
 					require $file_layout;
 				} else {

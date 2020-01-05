@@ -8,6 +8,8 @@
 	{
 		public function actionIndex()
 		{
-		
+			$name = 'Alex';
+			$hi = 'Hello';
+			$this->set(compact('name', 'hi'));
 		}
 	}
