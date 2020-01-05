@@ -3,8 +3,8 @@
 	namespace app\controllers;
 	
 	
-	class PostsNew
-		extends App
+	class PostsNewController
+		extends AppController
 	{
 		
 		public function actionIndex()

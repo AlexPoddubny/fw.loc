@@ -6,7 +6,7 @@
 	
 	use vendor\core\base\Controller;
 	
-	class App
+	class AppController
 		extends Controller
 	{
 		

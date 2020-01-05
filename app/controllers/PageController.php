@@ -4,8 +4,8 @@
 	namespace app\controllers;
 	
 	
-	class Page
-		extends App
+	class PageController
+		extends AppController
 	{
 		public function actionView()
 		{

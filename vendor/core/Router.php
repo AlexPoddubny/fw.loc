@@ -73,7 +73,8 @@
 			$url = self::removeQueryString($url);
 			if (self::matchRoute($url)){
 				$controller = 'app\controllers\\'
-					. self::upperCamelCase(self::$route['controller']);
+					. self::upperCamelCase(self::$route['controller'])
+					. 'Controller';
 				if (class_exists($controller)){
 					$cObj = new $controller(self::$route);
 					$action = 'action' . self::upperCamelCase(self::$route['action']);
