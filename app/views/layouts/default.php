@@ -17,6 +17,15 @@
 	<?=$content?>
 </div>
 
+<div class="container">
+	<div>
+		<?= debug(\vendor\core\Db::$countSql)?>
+	</div>
+	<div>
+		<?= debug(\vendor\core\Db::$queries)?>
+	</div>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>

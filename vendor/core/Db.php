@@ -12,7 +12,7 @@
 		protected $pdo;
 		protected static $instance;
 		public static $countSql = 0;
-		public static $queries = 0;
+		public static $queries = [];
 		
 		protected function __construct()
 		{
@@ -34,12 +34,16 @@
 		
 		public function execute($sql)
 		{
+			self::$countSql++;
+			self::$queries[] = $sql;
 			$stmt = $this->pdo->prepare($sql);
 			return $stmt->execute();
 		}
 		
 		public function query($sql)
 		{
+			self::$countSql++;
+			self::$queries[] = $sql;
 			$stmt = $this->pdo->prepare($sql);
 			$res = $stmt->execute();
 			if ($res !== false){
