@@ -3,13 +3,16 @@
 	namespace app\controllers;
 	
 	
+	use app\models\Main;
+	
 	class MainController
 		extends AppController
 	{
 		public function actionIndex()
 		{
-			$name = 'Alex';
-			$hi = 'Hello';
-			$this->set(compact('name', 'hi'));
+			$model = new Main();
+			$posts = $model->findAll();
+			$title = 'Page title';
+			$this->set(compact('title', 'posts'));
 		}
 	}
