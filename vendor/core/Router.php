@@ -8,11 +8,6 @@
 		protected static $routes = [];
 		protected static $route = [];
 		
-		/*public function __construct()
-		{
-			echo __FILE__;
-		}*/
-		
 		public static function add($regexp, $route = [])
 		{
 			self::$routes[$regexp] = $route;

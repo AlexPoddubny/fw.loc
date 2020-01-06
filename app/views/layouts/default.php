@@ -15,9 +15,6 @@
 <div class="container">
 	<h1>Hello, world!</h1>
 	<?=$content?>
-</div>
-
-<div class="container">
 	<div>
 		<?= debug(\vendor\core\Db::$countSql)?>
 	</div>

@@ -12,6 +12,8 @@
 		{
 			$model = new Main();
 			$posts = $model->findAll();
+			$post = $model->findOne(1);
+			debug($post);
 			$title = 'Page title';
 			$this->set(compact('title', 'posts'));
 		}
