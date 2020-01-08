@@ -16,7 +16,7 @@
 			$menu = $this->menu;
 			$this->setMeta('Main page', 'Main page description', 'Keywords');
 			$meta = $this->meta;
-			$this->set(compact('title', 'posts', 'menu', 'meta'));
+			$this->set(compact('posts', 'menu', 'meta'));
 		}
 		
 		public function actionTest()
