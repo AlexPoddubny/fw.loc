@@ -5,6 +5,7 @@
 	
 	
 	use PDO;
+	use R;
 	
 	class Db
 	{
@@ -17,11 +18,15 @@
 		protected function __construct()
 		{
 			$db = require ROOT . '/config/db.php';
-			$options = [
+			require LIBS . '/rb.php';
+			/*$options = [
 				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-			];
-			$this->pdo = new PDO($db['dsn'], $db['user'], $db['password'], $options);
+			];*/
+			R::setup($db['dsn'], $db['user'], $db['password']);
+			R::freeze(true);
+//			R::fancyDebug(true);
+			/*$this->pdo = new PDO($db['dsn'], $db['user'], $db['password'], $options);*/
 		}
 		
 		public static function instance()
