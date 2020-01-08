@@ -6,12 +6,14 @@
 	
 	use PDO;
 	use R;
+	use vendor\core\base\TSingleton;
 	
 	class Db
 	{
 		
+		use TSingleton;
+		
 		protected $pdo;
-		protected static $instance;
 		public static $countSql = 0;
 		public static $queries = [];
 		
@@ -27,14 +29,6 @@
 			R::freeze(true);
 //			R::fancyDebug(true);
 			/*$this->pdo = new PDO($db['dsn'], $db['user'], $db['password'], $options);*/
-		}
-		
-		public static function instance()
-		{
-			if (self::$instance === null){
-				self::$instance = new self();
-			}
-			return self::$instance;
 		}
 		
 		public function execute($sql, $params = [])
