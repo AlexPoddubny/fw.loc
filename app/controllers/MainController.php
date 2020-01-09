@@ -9,6 +9,7 @@
 	class MainController
 		extends AppController
 	{
+		
 		public function actionIndex()
 		{
 			$model = new Main;

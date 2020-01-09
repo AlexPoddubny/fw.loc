@@ -16,4 +16,9 @@
 			return self::$instance;
 		}
 		
+		protected function __construct()
+		{
+		
+		}
+		
 	}
