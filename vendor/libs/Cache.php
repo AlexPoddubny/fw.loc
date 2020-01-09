@@ -6,14 +6,36 @@
 	
 	class Cache
 	{
-		public function __construct()
+		
+		public function set($key, $data, $seconds = 3600)
 		{
-			echo __METHOD__;
+			$content['data'] = $data;
+			$content['end_time'] = time() + $seconds;
+			return file_put_contents(
+				CACHE . '/' . md5($key) . '.txt',
+				serialize($content)
+			);
 		}
 		
-		public function test()
+		public function get($key)
 		{
-			echo __METHOD__;
+			$file = CACHE . '/' . md5($key) . '.txt';
+			if (file_exists($file)){
+				$content = unserialize(file_get_contents($file));
+				if ($content['end_time'] >= time()){
+					return $content['data'];
+				}
+				unlink($file);
+			}
+			return false;
+		}
+		
+		public function delete($key)
+		{
+			$file = CACHE . '/' . md5($key) . '.txt';
+			if (file_exists($file)){
+				unlink($file);
+			}
 		}
 		
 	}

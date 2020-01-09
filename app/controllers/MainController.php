@@ -13,7 +13,6 @@
 		
 		public function actionIndex()
 		{
-//			App::$app->getList();
 			$model = new Main;
 			$posts = R::findAll('posts');
 			$menu = $this->menu;
