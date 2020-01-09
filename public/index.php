@@ -2,6 +2,7 @@
 	
 	error_reporting(-1);
 	
+	use vendor\core\App;
 	use vendor\core\Router;
 	
 	$query = rtrim($_SERVER['QUERY_STRING'], '/');
@@ -22,6 +23,8 @@
 			require_once $file;
 		}
 	});
+	
+	new App();
 	
 	//specific routes
 	Router::add('^page/(?P<action>[a-z-]+)?/(?P<alias>[a-z-]+)?$', ['controller' => 'page']);
