@@ -1,8 +1,10 @@
 <?php
 	
 	
-	namespace vendor\core\base;
+	namespace vendor\core;
 	
+	
+	use vendor\core\base\TSingleton;
 	
 	class Registry
 	{

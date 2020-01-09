@@ -5,6 +5,7 @@
 	
 	use app\models\Main;
 	use R;
+	use vendor\core\App;
 	
 	class MainController
 		extends AppController
@@ -12,6 +13,7 @@
 		
 		public function actionIndex()
 		{
+//			App::$app->getList();
 			$model = new Main;
 			$posts = R::findAll('posts');
 			$menu = $this->menu;
