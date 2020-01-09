@@ -9,6 +9,7 @@
 		public $route = [];
 		public $view;
 		public $layout;
+		public $scripts = [];
 		
 		public function __construct($route, $layout = '', $view = '')
 		{
@@ -47,6 +48,12 @@
 					echo '<p>Layout <b>' . $file_layout . '</b> not found </p>';
 				}
 			}
+		}
+		
+		protected function cutScripts($content)
+		{
+			$pattern = "#<script.*?>.*?</script>#si";
+			preg_match_all($pattern, $content, $this->scripts);
 		}
 		
 	}

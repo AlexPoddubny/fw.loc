@@ -1,4 +1,5 @@
 <?php if (!empty($posts)): ?>
+	<button class="btn btn-default" id="send">Button</button>
 	<?php foreach ($posts as $post):?>
 		<div class="panel panel-default">
 			<div class="panel-heading"><?=$post['title']?></div>
@@ -8,4 +9,21 @@
 		</div>
 	<?php endforeach; ?>
 <?php endif; ?>
-
+<script src="/js/test.js"></script>
+<script>
+	$(function(){
+		$('#send').click(function () {
+			$.ajax({
+				url: '/main/test',
+				type: 'post',
+				data: {'id': 2},
+				success: function (res) {
+					console.log(res);
+				},
+				error: function () {
+					console.log('error!');
+				}
+			});
+		});
+	});
+</script>

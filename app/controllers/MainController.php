@@ -23,6 +23,10 @@
 		
 		public function actionTest()
 		{
+			if ($this->isAjax()){
+				echo 111;
+				die;
+			}
 			$this->layout = 'test';
 			$title = 'PAGE TEST';
 			$this->set(compact('title'));
