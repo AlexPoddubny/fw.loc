@@ -6,6 +6,7 @@
 	use app\models\Main;
 	use R;
 	use vendor\core\App;
+	use vendor\core\base\View;
 	
 	class MainController
 		extends AppController
@@ -16,15 +17,17 @@
 			$model = new Main;
 			$posts = R::findAll('posts');
 			$menu = $this->menu;
-			$this->setMeta('Main page', 'Main page description', 'Keywords');
-			$meta = $this->meta;
-			$this->set(compact('posts', 'menu', 'meta'));
+			View::setMeta('Main page', 'Main page description', 'Keywords');
+//			$meta = $this->meta;
+			$this->set(compact('posts', 'menu'));
 		}
 		
 		public function actionTest()
 		{
 			if ($this->isAjax()){
-				echo 111;
+				$model = new Main;
+				$post = R::findOne('posts', 'id = ' . $_POST['id']);
+				$this->loadView('test', compact('post'));
 				die;
 			}
 			$this->layout = 'test';

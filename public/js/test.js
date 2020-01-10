@@ -1,3 +1,3 @@
 $(function(){
-	alert($('#send').text());
+	// alert($('#send').text());
 });
