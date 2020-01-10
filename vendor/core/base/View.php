@@ -90,7 +90,6 @@
 			$keywords = ''
 		)
 		{
-			debug(func_get_args());
 			self::$meta['title'] = $title;
 			self::$meta['desc'] = $desc;
 			self::$meta['keywords'] = $keywords;
