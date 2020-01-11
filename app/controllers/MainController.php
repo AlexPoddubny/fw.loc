@@ -27,10 +27,8 @@
 				$model = new Main;
 				$post = R::findOne('posts', 'id = ' . $_POST['id']);
 				$this->loadView('test', compact('post'));
+				die;
 			}
-			/*$this->layout = 'test';
-			$title = 'PAGE TEST';
-			$this->set(compact('title'));*/
 		}
 		
 	}
