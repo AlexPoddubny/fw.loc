@@ -18,7 +18,6 @@
 			$posts = R::findAll('posts');
 			$menu = $this->menu;
 			View::setMeta('Main page', 'Main page description', 'Keywords');
-//			$meta = $this->meta;
 			$this->set(compact('posts', 'menu'));
 		}
 		
@@ -28,11 +27,10 @@
 				$model = new Main;
 				$post = R::findOne('posts', 'id = ' . $_POST['id']);
 				$this->loadView('test', compact('post'));
-				die;
 			}
-			$this->layout = 'test';
+			/*$this->layout = 'test';
 			$title = 'PAGE TEST';
-			$this->set(compact('title'));
+			$this->set(compact('title'));*/
 		}
 		
 	}

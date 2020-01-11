@@ -1,4 +1,5 @@
 <?php if (!empty($posts)): ?>
+	<div id="answer"></div>
 	<button class="btn btn-default" id="send">Button</button>
 	<?php foreach ($posts as $post):?>
 		<div class="panel panel-default">
@@ -18,7 +19,9 @@
 				type: 'post',
 				data: {'id': 2},
 				success: function (res) {
-					console.log(res);
+					// var data = JSON.parse(res);
+					$('#answer').html(res);
+					// console.log(res);
 				},
 				error: function () {
 					console.log('error!');
