@@ -3,6 +3,8 @@
 	namespace vendor\core;
 	
 	
+	use Exception;
+	
 	class Router
 	{
 		protected static $routes = [];
@@ -77,14 +79,17 @@
 						$cObj->$action();
 						$cObj->getView();
 					} else {
-						echo 'Method <b>' . $action . '</b> not found';
+//						echo 'Method <b>' . $action . '</b> not found';
+						throw new Exception('Method <b>' . $action . '</b> not found');
 					}
 				} else {
-					echo 'Controller <b>' . $controller . '</b> not found';
+//					echo 'Controller <b>' . $controller . '</b> not found';
+					throw new Exception('Controller <b>' . $controller . '</b> not found');
 				}
 			} else {
-				http_response_code(404);
-				include '404.html';
+				/*http_response_code(404);
+				include '404.html';*/
+				throw new NotFoundException('Page not found');
 			}
 		}
 		

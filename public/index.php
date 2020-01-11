@@ -12,8 +12,11 @@
 	define('ROOT', dirname(__DIR__));
 	define('LIBS', dirname(__DIR__) . '/vendor/libs');
 	define('APP', dirname(__DIR__) . '/app');
-	define('CACHE', dirname(__DIR__) . '/tmp/cache');
+	define('TMP', dirname(__DIR__) . '/tmp');
+	define('LOG', TMP . '/log');
+	define('CACHE', TMP . '/cache');
 	define('LAYOUT', 'default');
+	define("DEBUG", 1);
 	
 	require '../vendor/libs/functions.php';
 

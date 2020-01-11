@@ -4,6 +4,8 @@
 	namespace vendor\core\base;
 	
 	
+	use Exception;
+	
 	class View
 	{
 		public $route = [];
@@ -40,7 +42,7 @@
 			if (is_file($file_view)){
 				require $file_view;
 			} else {
-				echo '<p>View <b>' . $file_view . '</b> not found </p>';
+				throw new Exception('<p>View <b>' . $file_view . '</b> not found </p>');
 			}
 			$content = $this->cutScripts(ob_get_clean());
 			if (false !== $this->layout){
@@ -54,7 +56,7 @@
 					}
 					require $file_layout;
 				} else {
-					echo '<p>Layout <b>' . $file_layout . '</b> not found </p>';
+					throw new Exception('<p>Layout <b>' . $file_layout . '</b> not found </p>');
 				}
 			}
 		}
