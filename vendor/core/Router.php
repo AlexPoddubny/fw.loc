@@ -64,6 +64,7 @@
 		 * redirects URL to route
 		 * @param string $url - source URL
 		 * @return void
+		 * @throws NotFoundException
 		 */
 		public static function dispatch($url)
 		{
