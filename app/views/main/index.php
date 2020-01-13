@@ -1,6 +1,10 @@
 <?php if (!empty($posts)): ?>
 	<div id="answer"></div>
 	<button class="btn btn-default" id="send">Button</button>
+	<br>
+	<?php
+	new \vendor\widgets\menu\Menu();
+	?>
 	<?php foreach ($posts as $post):?>
 		<div class="panel panel-default">
 			<div class="panel-heading"><?=$post['title']?></div>
