@@ -6,24 +6,40 @@
 	
 	class Menu
 	{
-		protected $data;
-		protected $tree;
-		protected $menuHtml;
 		protected $tpl;
-		protected $container;
+		protected $class = 'menu';
+		protected $container = 'ul';
 		protected $table = 'categories';
-		protected $cache;
+		protected $cache = 3600;
 		
-		public function __construct()
+		public function __construct($options = [])
 		{
-			$this->run();
+			switch ($this->container){
+				case 'ul':
+					$this->tpl = __DIR__ . '/menu_tpl/menu.php';
+					break;
+				case 'select':
+					$this->tpl = __DIR__ . '/menu_tpl/select.php';
+					break;
+			}
+			$this->getOptions($options);
+			$this->output();
 		}
 		
-		protected function run()
+		protected function output()
 		{
-			$this->getData();
-			$this->getTree();
-			echo $this->menuHtml = $this->getMenuHtml($this->tree);
+			echo '<' . $this->container . ' class="' . $this->class . '">'
+				. $this->getMenuHtml($this->getTree())
+				. '</' . $this->container . '>';
+		}
+		
+		protected function getOptions($options)
+		{
+			foreach ($options as $name => $value){
+				if (property_exists($this, $name)){
+					$this->$name = $value;
+				}
+			}
 		}
 		
 		/**
@@ -31,7 +47,7 @@
 		 */
 		public function getData()
 		{
-			return $this->data = \R::getAssoc('SELECT * FROM ' . $this->table);
+			return \R::getAssoc('SELECT * FROM ' . $this->table);
 		}
 		
 		/**
@@ -40,7 +56,7 @@
 		protected function getTree()
 		{
 			$tree = [];
-			$data = $this->data;
+			$data = $this->getData();
 			foreach ($data as $id => &$node){
 				if (!$node['parent']){
 					$tree[$id] = &$node;
@@ -48,7 +64,7 @@
 					$data[$node['parent']]['childs'][$id] = &$node;
 				}
 			}
-			return $this->tree = $tree;
+			return $tree;
 		}
 		
 		/**
@@ -65,7 +81,7 @@
 		
 		protected function catToTemplate($category, $tab, $id){
 			ob_start();
-			require __DIR__ . '/menu_tpl/menu.php';
+			require $this->tpl;
 			return ob_get_clean();
 		}
 		
