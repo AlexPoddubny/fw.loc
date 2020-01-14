@@ -7,7 +7,7 @@
 		<?php
 			new Menu([
 				'tpl' => APP . '/views/widgets/menu/menu_tpl/select.php',
-//				'class' => 'menu',
+				'class' => 'menu',
 				'container' => 'select',
 				'table' => 'categories',
 				'cache' => 60

@@ -4,42 +4,54 @@
 	namespace vendor\widgets\menu;
 	
 	
+	use vendor\libs\Cache;
+	
 	class Menu
 	{
+		
+		protected $menuHtml;
 		protected $tpl;
 		protected $class = 'menu';
 		protected $container = 'ul';
 		protected $table = 'categories';
 		protected $cache = 3600;
 		
+		public function run()
+		{
+			if ($this->cache){
+				$cache = new Cache();
+				$this->menuHtml = $cache->get('fw_menu');
+				if (!$this->menuHtml){
+					$this->menuHtml = $this->getMenuHtml($this->getTree());
+					$cache->set('fw_menu', $this->menuHtml, $this->cache);
+				}
+			} else {
+				$this->menuHtml = $this->getMenuHtml($this->getTree());
+			}
+			$this->output();
+		}
+		
 		public function __construct($options = [])
 		{
-			switch ($this->container){
-				case 'ul':
-					$this->tpl = __DIR__ . '/menu_tpl/menu.php';
-					break;
-				case 'select':
-					$this->tpl = __DIR__ . '/menu_tpl/select.php';
-					break;
-			}
-			$this->getOptions($options);
-			$this->output();
+			$this->setOptions($options);
+			$this->run();
 		}
 		
 		protected function output()
 		{
 			echo '<' . $this->container . ' class="' . $this->class . '">'
-				. $this->getMenuHtml($this->getTree())
+				. $this->menuHtml
 				. '</' . $this->container . '>';
 		}
 		
-		protected function getOptions($options)
+		protected function setOptions($options)
 		{
 			foreach ($options as $name => $value){
 				if (property_exists($this, $name)){
 					$this->$name = $value;
 				}
 			}
+			$this->setTemplate();
 		}
 		
 		/**
@@ -68,6 +80,8 @@
 		}
 		
 		/**
+		 * @param $tree
+		 * @param string $tab
 		 * @return mixed
 		 */
 		public function getMenuHtml($tree, $tab = '')
@@ -83,6 +97,20 @@
 			ob_start();
 			require $this->tpl;
 			return ob_get_clean();
+		}
+		
+		protected function setTemplate()
+		{
+			if (empty($this->tpl)){
+				switch ($this->container){
+					case 'ul':
+						$this->tpl = __DIR__ . '/menu_tpl/menu.php';
+						break;
+					case 'select':
+						$this->tpl = __DIR__ . '/menu_tpl/select.php';
+						break;
+				}
+			}
 		}
 		
 	}
