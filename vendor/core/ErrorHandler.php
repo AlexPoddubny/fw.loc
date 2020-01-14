@@ -76,7 +76,7 @@
 		{
 			$this->logErrors($errstr, $errfile, $errline);
 			http_response_code($responce);
-			if ($responce == 404){
+			if ($responce == 404 && !DEBUG){
 				require APP . '/views/errors/404.html';
 				die;
 			}
