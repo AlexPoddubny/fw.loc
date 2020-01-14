@@ -13,6 +13,15 @@
 				'cache' => 60
 			]);
 		?>
+		<?php
+			new Menu([
+				'tpl' => APP . '/views/widgets/menu/menu_tpl/menu.php',
+				'class' => 'menu',
+				'container' => 'ul',
+				'table' => 'categories',
+				'cache' => 60
+			]);
+		?>
 		<?php foreach ($posts as $post):?>
 			<div class="panel panel-default">
 				<div class="panel-heading"><?=$post['title']?></div>

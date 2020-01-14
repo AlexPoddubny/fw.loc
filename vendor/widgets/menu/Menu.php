@@ -20,10 +20,10 @@
 		{
 			if ($this->cache){
 				$cache = new Cache();
-				$this->menuHtml = $cache->get('fw_menu');
+				$this->menuHtml = $cache->get('fw_menu' . $this->container);
 				if (!$this->menuHtml){
 					$this->menuHtml = $this->getMenuHtml($this->getTree());
-					$cache->set('fw_menu', $this->menuHtml, $this->cache);
+					$cache->set('fw_menu' . $this->container, $this->menuHtml, $this->cache);
 				}
 			} else {
 				$this->menuHtml = $this->getMenuHtml($this->getTree());
