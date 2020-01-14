@@ -48,6 +48,11 @@
 					if (!isset($route['action'])){
 						$route['action'] = 'index';
 					}
+					if (!isset($route['prefix'])){
+						$route['prefix'] = '';
+					} else {
+						$route['prefix'] .= '\\';
+					}
 					self::$route = $route;
 					return true;
 				}
@@ -71,6 +76,7 @@
 			$url = self::removeQueryString($url);
 			if (self::matchRoute($url)){
 				$controller = 'app\controllers\\'
+					. self::$route['prefix']
 					. self::upperCamelCase(self::$route['controller'])
 					. 'Controller';
 				if (class_exists($controller)){
@@ -80,16 +86,12 @@
 						$cObj->$action();
 						$cObj->getView();
 					} else {
-//						echo 'Method <b>' . $action . '</b> not found';
 						throw new Exception('Method <b>' . $action . '</b> not found');
 					}
 				} else {
-//					echo 'Controller <b>' . $controller . '</b> not found';
 					throw new Exception('Controller <b>' . $controller . '</b> not found');
 				}
 			} else {
-				/*http_response_code(404);
-				include '404.html';*/
 				throw new NotFoundException('Page not found');
 			}
 		}
