@@ -36,6 +36,7 @@
 			}
 			$file_view = APP
 				. '/views/'
+				. $this->route['prefix']
 				. $this->route['controller'] . '/'
 				. $this->view . '.php';
 			ob_start();
