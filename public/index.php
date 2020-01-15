@@ -2,15 +2,15 @@
 	
 	error_reporting(-1);
 	
-	use vendor\core\App;
-	use vendor\core\Router;
+	use fw\core\App;
+	use fw\core\Router;
 	
 	$query = rtrim($_SERVER['QUERY_STRING'], '/');
 	
 	define('WWW', __DIR__);
-	define('CORE', dirname(__DIR__ . '/vendor/core'));
+	define('CORE', dirname(__DIR__ . '/vendor/fw/core'));
 	define('ROOT', dirname(__DIR__));
-	define('LIBS', dirname(__DIR__) . '/vendor/libs');
+	define('LIBS', dirname(__DIR__) . '/vendor/fw/libs');
 	define('APP', dirname(__DIR__) . '/app');
 	define('TMP', dirname(__DIR__) . '/tmp');
 	define('LOG', TMP . '/log');
@@ -18,15 +18,16 @@
 	define('LAYOUT', 'default');
 	define("DEBUG", 1);
 	
-	require '../vendor/libs/functions.php';
+	require '../vendor/fw/libs/functions.php';
+	require __DIR__ . '/../vendor/autoload.php';
 
 	//classes autoload
-	spl_autoload_register(function($class){
+/*	spl_autoload_register(function($class){
 		$file = ROOT . '/' . str_replace('\\', '/', $class) . '.php';
 		if (is_file($file)){
 			require_once $file;
 		}
-	});
+	});*/
 	
 	new App();
 	

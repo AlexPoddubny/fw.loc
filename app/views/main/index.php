@@ -1,4 +1,4 @@
-<?php use vendor\widgets\menu\Menu;
+<?php use fw\widgets\menu\Menu;
 	
 	if (!empty($posts)): ?>
 		<div id="answer"></div>

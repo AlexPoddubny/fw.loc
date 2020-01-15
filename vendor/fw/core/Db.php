@@ -1,12 +1,12 @@
 <?php
 	
 	
-	namespace vendor\core;
+	namespace fw\core;
 	
 	
 	use PDO;
 	use R;
-	use vendor\core\base\TSingleton;
+	use fw\core\base\TSingleton;
 	
 	class Db
 	{

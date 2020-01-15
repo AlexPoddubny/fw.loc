@@ -5,8 +5,8 @@
 	
 	
 	use app\models\Main;
+	use fw\core\base\Controller;
 	use R;
-	use vendor\core\base\Controller;
 	
 	class AppController
 		extends Controller

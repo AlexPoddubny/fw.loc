@@ -1,7 +1,7 @@
 <?php
 	return $config = [
 		'components' => [
-			'cache' => 'vendor\libs\Cache',
-			'test' => 'vendor\libs\Test',
+			'cache' => 'fw\libs\Cache',
+			'test' => 'fw\libs\Test',
 		],
 	];
