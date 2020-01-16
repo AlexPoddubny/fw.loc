@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fw/core" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fw/libs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fw/widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

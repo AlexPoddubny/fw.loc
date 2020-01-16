@@ -15,12 +15,10 @@
 
 
 <div class="container">
-	<?php if (!empty($menu)):?>
 	<ul class="nav nav-pills">
 		<li><a href="/">Home</a></li>
 		<li><a href="/admin">ADmin</a></li>
 	</ul>
-	<?php endif;?>
 	<h1>Hello, world!</h1>
 	<?=$content?>
 </div>

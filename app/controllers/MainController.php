@@ -4,6 +4,8 @@
 	
 	
 	use app\models\Main;
+	use Monolog\Handler\StreamHandler;
+	use Monolog\Logger;
 	use R;
 	use fw\core\App;
 	use fw\core\base\View;
@@ -14,6 +16,12 @@
 		
 		public function actionIndex()
 		{
+			$log = new Logger('name');
+			$log->pushHandler(new StreamHandler(LOG . '/monolog.log',
+				Logger::WARNING));
+			$log->warning('Foo');
+			$log->error('Bar');
+			
 			$model = new Main;
 			$posts = R::findAll('posts');
 			$menu = $this->menu;

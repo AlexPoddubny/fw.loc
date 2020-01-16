@@ -1,7 +1,9 @@
 {
     "name": "fw/fw",
     "description": "test framework",
-    "require": {},
+    "require": {
+        "monolog/monolog": "^2.0"
+    },
     "autoload": {
         "psr-4": {
             "fw\\": "vendor/fw",

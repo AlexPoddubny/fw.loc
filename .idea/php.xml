@@ -6,6 +6,8 @@
       <path value="$PROJECT_DIR$/vendor/fw/widgets" />
       <path value="$PROJECT_DIR$/vendor/fw/libs" />
       <path value="$PROJECT_DIR$/vendor/fw/core" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
     </include_path>
   </component>
 </project>

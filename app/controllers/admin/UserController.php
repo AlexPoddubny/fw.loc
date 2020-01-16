@@ -12,6 +12,7 @@
 		public function actionIndex()
 		{
 			View::setMeta('АДминка::Главная страница', 'Description', 'Keywords');
+			echo $this->layout;
 		}
 		
 		public function actionTest()
