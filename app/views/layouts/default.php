@@ -18,6 +18,9 @@
 	<ul class="nav nav-pills">
 		<li><a href="/">Home</a></li>
 		<li><a href="/admin">ADmin</a></li>
+		<li><a href="/user/signup">Sign Up</a></li>
+		<li><a href="/user/login">Login</a></li>
+		<li><a href="/user/logout">Logout</a></li>
 	</ul>
 	<h1>Hello, world!</h1>
 	<?=$content?>
