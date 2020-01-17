@@ -2,7 +2,8 @@
     "name": "fw/fw",
     "description": "test framework",
     "require": {
-        "monolog/monolog": "^2.0"
+        "monolog/monolog": "^2.0",
+        "vlucas/valitron": "^1.4"
     },
     "autoload": {
         "psr-4": {
