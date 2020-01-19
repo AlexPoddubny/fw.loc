@@ -12,13 +12,21 @@
 	{
 		public function actionSignup()
 		{
+			View::setMeta('Регистрация');
 			if (!empty($_POST)){
 				$user = new User();
+				if (!$user->validate($_POST)){
+					echo $user->getErrors();
+					redirect();
+				}
 				$user->load($_POST);
-				debug($user);
-				die;
+				if ($user->save()){
+					$_SESSION['success'] = 'Registration successfull!';
+				} else {
+					$_SESSION['error'] = 'Registration Failed!';
+				}
+				redirect();
 			}
-			View::setMeta('Регистрация');
 		}
 		
 		public function actionLogin()

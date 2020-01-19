@@ -5,6 +5,7 @@
 	
 	
 	use fw\core\Db;
+	use Valitron\Validator;
 	
 	abstract class Model
 	{
@@ -12,6 +13,8 @@
 		protected $table;
 		protected $pk = 'id';
 		public $attributes = [];
+		public $errors = [];
+		public $rules = [];
 		
 		public function __construct()
 		{
@@ -27,9 +30,39 @@
 			}
 		}
 		
+		public function save()
+		{
+			$tbl = \R::dispense($this->table);
+			foreach ($this->attributes as $name => $value){
+				$tbl->$name = $value;
+			}
+			return \R::store($tbl);
+		}
+		
 		public function validate($data)
 		{
+			$v = new Validator($data);
+			$v->rules($this->rules);
+			if ($v->validate()){
+				return true;
+			}
+			$this->errors = $v->errors();
+			return false;
+		}
 		
+		/**
+		 * @return array
+		 */
+		public function getErrors()
+		{
+			$errors = '<ul>';
+			foreach ($this->errors as $error){
+				foreach ($error as $item){
+					$errors .= '<li>' . $item . '</li>';
+				}
+			}
+			$errors .= '</ul>';
+			$_SESSION['error'] = $errors;
 		}
 		
 		public function query($sql)
