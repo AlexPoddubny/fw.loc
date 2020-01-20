@@ -21,6 +21,7 @@
 		<li><a href="/user/signup">Sign Up</a></li>
 		<li><a href="/user/login">Login</a></li>
 		<li><a href="/user/logout">Logout</a></li>
+		<li><a href="/fbparse">FB Parser</a></li>
 	</ul>
 	<h1>Hello, world!</h1>
 	<?php if (isset($_SESSION['error'])):?>
