@@ -15,11 +15,13 @@
 			View::setMeta('Регистрация');
 			if (!empty($_POST)){
 				$user = new User();
-				if (!$user->validate($_POST)){
-					echo $user->getErrors();
+				$user->load($_POST);
+				if (!$user->validate() || !$user->checkUnique()) {
+					$user->getErrors();
+					$_SESSION['form_data'] = $_POST;
 					redirect();
 				}
-				$user->load($_POST);
+				$user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
 				if ($user->save()){
 					$_SESSION['success'] = 'Registration successfull!';
 				} else {

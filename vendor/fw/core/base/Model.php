@@ -39,9 +39,11 @@
 			return \R::store($tbl);
 		}
 		
-		public function validate($data)
+		public function validate()
 		{
-			$v = new Validator($data);
+			Validator::lang('ru');
+			$v = new Validator($this->attributes);
+			$v::lang('ru');
 			$v->rules($this->rules);
 			if ($v->validate()){
 				return true;
