@@ -15,8 +15,8 @@
 			View::setMeta('FBParser');
 			if (!empty($_POST['input'])){
 				$result = $this->process($_POST['input']);
+				$this->set(compact('result'));
 			}
-			$this->set(compact('result'));
 		}
 		
 		protected function process($page)
