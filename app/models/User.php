@@ -35,11 +35,30 @@
 			],
 		];
 		
-/*		public function load($data)
+		public function login($data)
 		{
-			parent::load($data);
-			$this->attributes['password'] = password_hash($this->attributes['password'], PASSWORD_DEFAULT);
-		}*/
+			$login = !empty(trim($data['login'])) ? trim($data['login']) : null;
+			$password = !empty(trim($data['password'])) ? trim($data['password']) : null;
+			if ($login && $password){
+				$user = \R::findOne(
+					$this->table,
+					'login = ? LIMIT 1',
+					[
+						$login
+					]);
+				if ($user && password_verify($password, $user->password)){
+					$_SESSION['user'] = [];
+					foreach ($user as $k => $v){
+						if ($k != 'password'){
+							$_SESSION['user'][$k] = $v;
+						}
+					}
+					debug($_SESSION);
+					return true;
+				}
+			}
+			return false;
+		}
 		
 		public function checkUnique()
 		{
@@ -49,8 +68,7 @@
 				[
 					$this->attributes['login'],
 					$this->attributes['email']
-				]
-			);
+				]);
 			if ($user){
 				if ($user->login == $this->attributes['login']){
 					$this->errors['unique'][] = 'Login already exists';

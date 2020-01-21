@@ -33,12 +33,36 @@
 		
 		public function actionLogin()
 		{
-		
+			View::setMeta('Login page');
+			if(!empty($_POST)){
+				$user = new User();
+				if ($user->login($_POST)){
+					$_SESSION['success'] = 'Welcome onboard!';
+					redirect('/user');
+				} else {
+					$_SESSION['error'] = 'Login/password incorrect!';
+					redirect('/user/login');
+				}
+			}
 		}
 		
 		public function actionLogout()
 		{
+			if (isset($_SESSION['user'])){
+				unset($_SESSION['user']);
+				redirect('/');
+			}
+		}
 		
+		public function actionIndex()
+		{
+			if (isset($_SESSION['user'])){
+				$user = $_SESSION['user'];
+				$this->set(compact('user'));
+			} else {
+				$_SESSION['error'] = 'User not autorized!';
+				redirect('/');
+			}
 		}
 		
 	}

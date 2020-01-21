@@ -12,32 +12,42 @@
 	
 </head>
 <body>
-
-
 <div class="container">
+	<!-- MENU begin -->
 	<ul class="nav nav-pills">
 		<li><a href="/">Home</a></li>
-		<li><a href="/admin">ADmin</a></li>
-		<li><a href="/user/signup">Sign Up</a></li>
-		<li><a href="/user/login">Login</a></li>
-		<li><a href="/user/logout">Logout</a></li>
+		<?php if (!isset($_SESSION['user'])):?>
+			<li><a href="/user/signup">Sign Up</a></li>
+			<li><a href="/user/login">Login</a></li>
+		<?php endif;?>
+		<?php if (isset($_SESSION['user'])):?>
+			<li><a href="/user"><?=$_SESSION['user']['login']?></a></li>
+			<li><a href="/user/logout">Logout</a></li>
+			<?php if ('admin' == $_SESSION['user']['role']):?>
+				<li><a href="/admin">ADmin</a></li>
+			<?php endif;?>
+		<?php endif;?>
 		<li><a href="/fbparse">FB Parser</a></li>
 	</ul>
-	<h1>Hello, world!</h1>
+	<!-- MENU end -->
+	<!-- MESSAGES begin -->
 	<?php if (isset($_SESSION['error'])):?>
-		<div class="alert alert-danger">
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<?php echo $_SESSION['error'];
 				unset($_SESSION['error'])
 			?>
 		</div>
 	<?php endif;?>
 	<?php if (isset($_SESSION['success'])):?>
-		<div class="alert alert-success">
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<?php echo $_SESSION['success'];
 				unset($_SESSION['success'])
 			?>
 		</div>
 	<?php endif;?>
+	<!-- MESSAGES end -->
 	<?=$content?>
 </div>
 

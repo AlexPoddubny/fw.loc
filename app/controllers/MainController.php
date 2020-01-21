@@ -16,12 +16,6 @@
 		
 		public function actionIndex()
 		{
-			$log = new Logger('name');
-			$log->pushHandler(new StreamHandler(LOG . '/monolog.log',
-				Logger::WARNING));
-			$log->warning('Foo');
-			$log->error('Bar');
-			
 			$model = new Main;
 			$posts = R::findAll('posts');
 			$menu = $this->menu;
