@@ -29,6 +29,27 @@
 			$this->view = $view;
 		}
 		
+		public function compressPage($buffer)
+		{
+			$search = [
+				"/(\n)+/",
+				"/\r\n+/",
+				"/\n(\t)+/",
+				"/\n(\ )+/",
+				"/\>(\n)+</",
+				"/\>\r\n</",
+			];
+			$replace = [
+				"\n",
+				"\n",
+				"\n",
+				"\n",
+				'><',
+				'><',
+			];
+			return preg_replace($search, $replace, $buffer);
+		}
+		
 		public function render($vars)
 		{
 			if (is_array($vars)){
@@ -39,13 +60,16 @@
 				. $this->route['prefix']
 				. $this->route['controller'] . '/'
 				. $this->view . '.php';
-			ob_start();
+//			ob_start([$this, 'compressPage']);
+			ob_start('ob_gzhandler');
+			header('Content-Encoding: gzip');
 			if (is_file($file_view)){
 				require $file_view;
 			} else {
 				throw new Exception('<p>View <b>' . $file_view . '</b> not found </p>');
 			}
-			$content = $this->cutScripts(ob_get_clean());
+			$content = $this->cutScripts(ob_get_contents());
+			ob_clean();
 			if (false !== $this->layout){
 				$file_layout = APP
 					. '/views/layouts/'
