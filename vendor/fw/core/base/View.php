@@ -60,9 +60,13 @@
 				. $this->route['prefix']
 				. $this->route['controller'] . '/'
 				. $this->view . '.php';
-//			ob_start([$this, 'compressPage']);
-			ob_start('ob_gzhandler');
-			header('Content-Encoding: gzip');
+			// enable compress in production
+			if (DEBUG){
+				ob_start();
+			} else {
+				ob_start('ob_gzhandler');
+				header('Content-Encoding: gzip');
+			}
 			if (is_file($file_view)){
 				require $file_view;
 			} else {

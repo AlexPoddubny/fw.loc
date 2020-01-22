@@ -21,6 +21,12 @@
 				</div>
 			</div>
 		<?php endforeach; ?>
+		<div class="text-center">
+			<p>Articles: <?=count($posts);?> from <?=$total;?></p>
+			<?php if ($pagination->countPages > 1):?>
+				<p><?=$pagination;?></p>
+			<?php endif;?>
+		</div>
 	<?php endif; ?>
 <script src="/js/test.js"></script>
 <script>

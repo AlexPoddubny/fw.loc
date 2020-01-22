@@ -4,6 +4,7 @@
 	
 	
 	use app\models\Main;
+	use fw\libs\Pagination;
 	use Monolog\Handler\StreamHandler;
 	use Monolog\Logger;
 	use R;
@@ -17,10 +18,16 @@
 		public function actionIndex()
 		{
 			$model = new Main;
-			$posts = R::findAll('posts');
+			
+			$total = R::count('posts');
+			$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+			$perpage = 1;
+			$pagination = new Pagination($page, $perpage, $total);
+			$start = $pagination->getStart();
+			$posts = R::findAll('posts', 'LIMIT ' . $start . ', ' . $perpage);
 			$menu = $this->menu;
 			View::setMeta('Main page', 'Main page description', 'Keywords');
-			$this->set(compact('posts', 'menu'));
+			$this->set(compact('posts', 'menu', 'pagination', 'total'));
 		}
 		
 		public function actionTest()
