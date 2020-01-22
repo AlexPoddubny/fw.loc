@@ -12,13 +12,13 @@
 		
 		public $table = 'users';
 		
-		public $attributes = [
+		/*public $attributes = [
 			'login' => '',
 			'password' => '',
 			'name' => '',
 			'email' => '',
 			'role' => 'user'
-		];
+		];*/
 		
 		public $rules = [
 			'required' => [
@@ -34,6 +34,12 @@
 				['password', 6],
 			],
 		];
+		
+		public function __construct()
+		{
+			parent::__construct();
+			$this->getFields();
+		}
 		
 		public function login($data)
 		{
@@ -79,6 +85,12 @@
 				return false;
 			}
 			return true;
+		}
+		
+		public function getFields()
+		{
+			parent::getFields();
+			$this->attributes['role'] = 'user';
 		}
 		
 	}

@@ -97,4 +97,15 @@
 			return $this->pdo->query($sql, ['%' . $str . '%']);
 		}
 		
+		public function getFields()
+		{
+			$fields = \R::inspect($this->table);
+			foreach ($fields as $k => $v){
+				if ($k == $this->pk){
+					continue;
+				}
+				$this->attributes[$k] = '';
+			}
+		}
+		
 	}
