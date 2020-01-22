@@ -51,7 +51,8 @@
 					'login = ? LIMIT 1',
 					[
 						$login
-					]);
+					]
+				);
 				if ($user && password_verify($password, $user->password)){
 					$_SESSION['user'] = [];
 					foreach ($user as $k => $v){
@@ -59,7 +60,6 @@
 							$_SESSION['user'][$k] = $v;
 						}
 					}
-					debug($_SESSION);
 					return true;
 				}
 			}
@@ -74,7 +74,8 @@
 				[
 					$this->attributes['login'],
 					$this->attributes['email']
-				]);
+				]
+			);
 			if ($user){
 				if ($user->login == $this->attributes['login']){
 					$this->errors['unique'][] = 'Login already exists';
