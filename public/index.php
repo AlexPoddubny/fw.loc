@@ -15,7 +15,7 @@
 	define('TMP', dirname(__DIR__) . '/tmp');
 	define('LOG', TMP . '/log');
 	define('CACHE', TMP . '/cache');
-	define('LAYOUT', 'default');
+	define('LAYOUT', 'blog');
 	define("DEBUG", 1);
 	
 	require '../vendor/fw/libs/functions.php';
