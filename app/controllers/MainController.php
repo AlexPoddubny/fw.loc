@@ -21,13 +21,12 @@
 			
 			$total = R::count('posts');
 			$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-			$perpage = 1;
+			$perpage = 2;
 			$pagination = new Pagination($page, $perpage, $total);
 			$start = $pagination->getStart();
 			$posts = R::findAll('posts', 'LIMIT ' . $start . ', ' . $perpage);
-			$menu = $this->menu;
 			View::setMeta('Main page', 'Main page description', 'Keywords');
-			$this->set(compact('posts', 'menu', 'pagination', 'total'));
+			$this->set(compact('posts', 'pagination', 'total'));
 		}
 		
 		public function actionTest()

@@ -16,7 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
 		<!----//webfonts---->
-		  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<!--end slider -->
 		<!--script-->
 <script type="text/javascript" src="/blog/js/move-top.js"></script>
@@ -71,76 +71,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 <div class="container">
 		 <div class="content-grids">
 			 <div class="col-md-8 content-main">
-				 <div class="content-grid">					 
-					 <div class="content-grid-info">
+				 <div class="content-grid">
+					 <?=$content;?>
+					 <!--<div class="content-grid-info">
 						 <img src="/blog/images/post1.jpg" alt=""/>
 						 <div class="post-info">
 						 <h4><a href="single.html">Lorem ipsum dolor sit amet</a>  July 30, 2014 / 27 Comments</h4>
 						 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis.</p>
 						 <a href="single.html"><span></span>READ MORE</a>
 						 </div>
-					 </div>
-					 <div class="content-grid-info">
-						 <img src="/blog/images/post2.jpg" alt=""/>
-						 <div class="post-info">
-						 <h4><a href="single.html">Lorem ipsum dolor sit amet</a>  July 30, 2014 / 27 Comments</h4>
-						 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis.</p>
-						 <a href="single.html"><span></span>READ MORE</a>
-						 </div>
-					 </div>
-					 <div class="content-grid-info">
-						 <img src="/blog/images/post3.jpg" alt=""/>
-						 <div class="post-info">
-						 <h4><a href="single.html">Lorem ipsum dolor sit amet</a>  July 30, 2014 / 27 Comments</h4>
-						 <p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis.</p>
-						 <a href="single.html"><span></span>READ MORE</a>
-						 </div>
-					 </div>
-					 
+					 </div>-->
 				 </div>
-			  </div>
-			  <div class="col-md-4 content-right">
-				 <div class="recent">
-					 <h3>RECENT POSTS</h3>
-					 <ul>
-					 <li><a href="#">Aliquam tincidunt mauris</a></li>
-					 <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
-					 <li><a href="#">Nunc dignissim risus consecu</a></li>
-					 <li><a href="#">Cras ornare tristiqu</a></li>
-					 </ul>
-				 </div>
-				 <div class="comments">
-					 <h3>RECENT COMMENTS</h3>
-					 <ul>
-					 <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
-					 <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
-					 <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
-					 </ul>
-				 </div>
-				 <div class="clearfix"></div>
-				 <div class="archives">
-					 <h3>ARCHIVES</h3>
-					 <ul>
-					 <li><a href="#">October 2013</a></li>
-					 <li><a href="#">September 2013</a></li>
-					 <li><a href="#">August 2013</a></li>
-					 <li><a href="#">July 2013</a></li>
-					 </ul>
-				 </div>
-				 <div class="categories">
-					 <h3>CATEGORIES</h3>
-					 <ul>
-					 <li><a href="#">Vivamus vestibulum nulla</a></li>
-					 <li><a href="#">Integer vitae libero ac risus e</a></li>
-					 <li><a href="#">Vestibulum commo</a></li>
-					 <li><a href="#">Cras iaculis ultricies</a></li>
-					 </ul>
-				 </div>
-				 <div class="clearfix"></div>
-			  </div>
-			  <div class="clearfix"></div>
-		  </div>
-	  </div>
+			 </div>
+			 <div class="col-md-4 content-right">
+				 <?php $this->getPart('inc/sidebar');?>
+			 </div>
+			 <div class="clearfix"></div>
+		 </div>
+	 </div>
 </div>
 <!---->
 <div class="footer">
@@ -148,6 +96,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 <p>Copyrights © 2015 Blog All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
 	 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<?php if (!empty($scripts)){
+	foreach ($scripts as $script){
+		echo $script;
+	}
+}?>
 </body>
 </html>
 

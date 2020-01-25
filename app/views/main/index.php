@@ -1,23 +1,36 @@
 <?php use fw\widgets\menu\Menu;
 	
 	if (!empty($posts)): ?>
-		<div id="answer"></div>
+<!--		<div id="answer"></div>
 		<button class="btn btn-default" id="send">Button</button>
-		<br>
-		<?php
-			new Menu([
+		<br>-->
+<!--		--><?php
+/*			new Menu([
 				'tpl' => APP . '/views/widgets/menu/menu_tpl/select.php',
 				'class' => 'menu',
 				'container' => 'select',
 				'table' => 'categories',
 				'cache' => 60
 			]);
-		?>
+		*/?>
 		<?php foreach ($posts as $post):?>
-			<div class="panel panel-default">
-				<div class="panel-heading"><?=$post['title']?></div>
+<!--			<div class="panel panel-default">
+				<div class="panel-heading"><?/*=$post['title']*/?></div>
 				<div class="panel-body">
-					<?=$post['text']?>
+					<?/*=$post['text']*/?>
+				</div>
+			</div>-->
+			<div class="content-grid-info">
+				<img src="/blog/images/post1.jpg" alt=""/>
+				<div class="post-info">
+					<h4>
+						<a href="/page/<?=$post->id?>">
+							<?=$post->title?>
+						</a>
+						July 30, 2014 / 27 Comments
+					</h4>
+					<p><?=$post->text?></p>
+					<a href="single.html"><span></span>READ MORE</a>
 				</div>
 			</div>
 		<?php endforeach; ?>
