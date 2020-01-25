@@ -11,7 +11,8 @@
 		public function __construct()
 		{
 			session_start();
-			self::$app = Registry::instance();
+//			self::$app = Registry::instance();
+			self::$app = Register::instance();
 			new ErrorHandler();
 		}
 		

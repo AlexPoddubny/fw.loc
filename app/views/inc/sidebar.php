@@ -1,3 +1,9 @@
+<?php
+	
+	use fw\widgets\lang\Lang;
+	
+	new Lang();
+?>
 <div class="recent">
 	<h3>RECENT POSTS</h3>
 	<ul>

@@ -17,7 +17,7 @@
 		
 		public function actionIndex()
 		{
-			$model = new Main;
+//			$model = new Main;
 			
 			$total = R::count('posts');
 			$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;

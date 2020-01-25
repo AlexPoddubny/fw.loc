@@ -16,9 +16,9 @@
 			return self::$instance;
 		}
 		
-		protected function __construct()
+		/*protected function __construct()
 		{
 		
-		}
+		}*/
 		
 	}

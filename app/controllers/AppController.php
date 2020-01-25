@@ -5,7 +5,9 @@
 	
 	
 	use app\models\Main;
+	use fw\core\App;
 	use fw\core\base\Controller;
+	use fw\widgets\lang\Lang;
 	use R;
 	
 	class AppController
@@ -19,7 +21,9 @@
 		{
 			parent::__construct($route);
 			new Main();
-			$this->menu = R::findAll('category');
+			App::$app->setProperty('langs', Lang::getLangs());
+			App::$app->setProperty('lang', Lang::getLang(App::$app->getProperty('langs')));
+//			debug(App::$app->getProperties());
 		}
 		
 		protected function setMeta($title = '', $desc = '', $keywords = '')
