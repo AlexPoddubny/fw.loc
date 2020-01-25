@@ -6,7 +6,7 @@
 	
 	use PDO;
 	use R;
-	use fw\core\base\TSingleton;
+	use fw\core\TSingleton;
 	
 	class Db
 	{

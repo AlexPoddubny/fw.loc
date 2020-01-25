@@ -1,7 +1,7 @@
 <?php
 	
 	
-	namespace fw\core\base;
+	namespace fw\core;
 	
 	
 	trait TSingleton

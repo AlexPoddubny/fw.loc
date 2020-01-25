@@ -4,7 +4,7 @@
 	namespace fw\core;
 	
 	
-	use fw\core\base\TSingleton;
+	use fw\core\TSingleton;
 	
 	class Registry
 	{
