@@ -6,7 +6,7 @@
 	
 	use fw\core\base\View;
 	
-	class UserController
+	class MainController
 		extends AdminController
 	{
 		public function actionIndex()
@@ -20,8 +20,4 @@
 			}
 		}
 		
-		public function actionTest()
-		{
-//			echo 'АДминка TEST!';
-		}
 	}

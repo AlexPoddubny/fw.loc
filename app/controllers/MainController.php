@@ -5,8 +5,6 @@
 	
 	use app\models\Main;
 	use fw\libs\Pagination;
-	use Monolog\Handler\StreamHandler;
-	use Monolog\Logger;
 	use R;
 	use fw\core\App;
 	use fw\core\base\View;
@@ -17,11 +15,8 @@
 		
 		public function actionIndex()
 		{
-//			$model = new Main;
-			
 			$lang = App::$app->getProperty('lang')['code'];
 			$total = R::count('posts', 'lang_code = ?', [$lang]);
-			debug($total);
 			$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 			$perpage = 2;
 			$pagination = new Pagination($page, $perpage, $total);
