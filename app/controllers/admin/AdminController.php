@@ -14,6 +14,10 @@
 		public function __construct($route)
 		{
 			parent::__construct($route);
+			if (!$this->checkAdmin()){
+				$_SESSION['error'] = 'User access denied!';
+				redirect('/');
+			}
 		}
 		
 		protected function checkAdmin(){

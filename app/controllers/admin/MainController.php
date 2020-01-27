@@ -11,13 +11,7 @@
 	{
 		public function actionIndex()
 		{
-			if ($this->checkAdmin()) {
-				View::setMeta('АДминка::Главная страница', 'Description', 'Keywords');
-				//echo $this->layout;
-			} else {
-				$_SESSION['error'] = 'User access denied!';
-				redirect('/');
-			}
+			View::setMeta('АДминка::Main page', 'Description', 'Keywords');
 		}
 		
 	}
