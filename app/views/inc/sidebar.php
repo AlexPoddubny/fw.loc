@@ -1,11 +1,13 @@
+<div class="recent">
 <?php
 	
 	use fw\widgets\lang\Lang;
 	
 	new Lang();
 ?>
+</div>
 <div class="recent">
-	<h3>RECENT POSTS</h3>
+	<h3><?=__('recent')?></h3>
 	<ul>
 		<li><a href="#">Aliquam tincidunt mauris</a></li>
 		<li><a href="#">Vestibulum auctor dapibus lipsum</a></li>

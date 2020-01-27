@@ -1,4 +1,5 @@
-<?php use fw\widgets\menu\Menu;
+<?php use fw\core\base\Lang;
+	use fw\widgets\menu\Menu;
 	
 	if (!empty($posts)): ?>
 <!--		<div id="answer"></div>
@@ -30,12 +31,14 @@
 						July 30, 2014 / 27 Comments
 					</h4>
 					<p><?=$post->text?></p>
-					<a href="single.html"><span></span>READ MORE</a>
+					<a href="single.html"><span></span><?=__('readmore')?></a>
 				</div>
 			</div>
 		<?php endforeach; ?>
 		<div class="text-center">
-			<p>Articles: <?=count($posts);?> from <?=$total;?></p>
+			<p><?=__('articles')?>: <?=count($posts);?> <?=__('from')?>
+				<?=$total;
+			?></p>
 			<?php if ($pagination->countPages > 1):?>
 				<p><?=$pagination;?></p>
 			<?php endif;?>

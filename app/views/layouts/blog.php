@@ -21,6 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--script-->
 <script type="text/javascript" src="/blog/js/move-top.js"></script>
 <script type="text/javascript" src="/blog/js/easing.js"></script>
+
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -98,6 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/blog/js/main.js"></script>
 <?php if (!empty($scripts)){
 	foreach ($scripts as $script){
 		echo $script;

@@ -5,6 +5,7 @@
 	
 	
 	use Exception;
+	use fw\core\App;
 	
 	class View
 	{
@@ -52,6 +53,7 @@
 		
 		public function render($vars)
 		{
+			Lang::load(App::$app->getProperty('lang')['code'], $this->route);
 			if (is_array($vars)){
 				extract($vars);
 			}
