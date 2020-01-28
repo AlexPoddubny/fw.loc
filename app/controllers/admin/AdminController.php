@@ -9,7 +9,7 @@
 	class AdminController
 		extends AppController
 	{
-//		public $layout = 'admin';
+		public $layout = 'admin';
 		
 		public function __construct($route)
 		{
