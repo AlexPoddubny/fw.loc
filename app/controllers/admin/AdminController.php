@@ -5,6 +5,7 @@
 	
 	
 	use app\controllers\AppController;
+	use app\models\User;
 	
 	class AdminController
 		extends AppController
@@ -14,13 +15,9 @@
 		public function __construct($route)
 		{
 			parent::__construct($route);
-			if (!$this->checkAdmin()){
+			if (!User::isAdmin()){
 				$_SESSION['error'] = 'User access denied!';
 				redirect('/');
 			}
-		}
-		
-		protected function checkAdmin(){
-			return isset($_SESSION['user']) && 'admin' == $_SESSION['user']['role'];
 		}
 	}

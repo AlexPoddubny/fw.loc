@@ -94,4 +94,9 @@
 			$this->attributes['role'] = 'user';
 		}
 		
+		public static function isAdmin()
+		{
+			return isset($_SESSION['user']) && 'admin' == $_SESSION['user']['role'];
+		}
+		
 	}
