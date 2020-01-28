@@ -37,8 +37,8 @@
 		<?php endforeach; ?>
 		<div class="text-center">
 			<p><?=__('articles')?>: <?=count($posts);?> <?=__('from')?>
-				<?=$total;
-			?></p>
+				<?=$total;?>
+			</p>
 			<?php if ($pagination->countPages > 1):?>
 				<p><?=$pagination;?></p>
 			<?php endif;?>
